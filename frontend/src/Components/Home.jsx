@@ -5,6 +5,7 @@ import { addToCart } from '../features/cartSlice';
 // import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
@@ -12,8 +13,11 @@ const Home = () => {
     const { data, error, isLoading } = useGetAllProductsQuery();
 
     const dispatch = useDispatch()
+
+    const navigate= useNavigate()
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
+        navigate("/cart");
     }
 
     return (
