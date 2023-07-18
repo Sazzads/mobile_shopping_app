@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import productReducer, { productFetch } from './features/productSlice.js'
 import { productsApi } from './features/productsApi.js'
-import cartReducer from './features/cartSlice.js'
+import cartReducer, { getTotals } from './features/cartSlice.js'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,6 +21,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware),
 });
 store.dispatch(productFetch())
+store.dispatch(getTotals())
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
