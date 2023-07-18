@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart, decreaseCart, removeFromCart } from '../features/cartSlice';
+import { addToCart, clearCart, decreaseCart, removeFromCart } from '../features/cartSlice';
 
 const Cart = () => {
     const cart = useSelector(state => state.cart)
@@ -14,8 +14,12 @@ const Cart = () => {
         dispatch(decreaseCart(cartItem))
     }
 
-    const handleIncreaseCart=(cartItem)=>{
+    const handleIncreaseCart = (cartItem) => {
         dispatch(addToCart(cartItem))
+    }
+
+    const handleClearCart = () => {
+        dispatch(clearCart())
     }
     return (
         <div className='cart-container'>
@@ -51,7 +55,7 @@ const Cart = () => {
                                     </div>
                                     <div>
                                         <div className="cart-product-price">${cartItem.price}</div>
-                                            <button onClick={() => handleDecreaseCart(cartItem)}>-</button>
+                                        <button onClick={() => handleDecreaseCart(cartItem)}>-</button>
                                         <div className="cart-product-quantity">
                                             <div className="count">{cartItem.cartQuantity}</div>
                                         </div>
@@ -63,7 +67,7 @@ const Cart = () => {
                     </div>
                 </div>)}
             <div className="cart-summary">
-                <button className="clear-cart">Clear cart</button>
+                <button onClick={() => handleClearCart()} className="clear-cart">Clear cart</button>
                 <div className="cart-checkout">
                     <div className="subtotal">
                         <span>SubTotal</span>
