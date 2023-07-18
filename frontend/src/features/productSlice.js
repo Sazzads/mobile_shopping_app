@@ -12,7 +12,7 @@ const initialState = {
 //     async (id = null, { rejectWithValue }) => {
 //         try {
 
-//             const response = await axios.get("http://localhost:5000/product")
+//             const response = await axios.get("https://backend-sazzads.vercel.app/product")
 //             return response?.data
 //         }
 //         catch (error) {
@@ -25,7 +25,7 @@ const initialState = {
 export const productFetch = createAsyncThunk(
     "products/productFetch",
     async () => {
-            const response = await axios.get("http://localhost:5000/products")
+            const response = await axios.get("https://backend-sazzads.vercel.app/products")
             return response?.data
     }
 )
