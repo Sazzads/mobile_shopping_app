@@ -9,7 +9,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import productReducer, { productFetch } from './features/productSlice.js'
 import { productsApi } from './features/productsApi.js'
 import cartReducer from './features/cartSlice.js'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    
     <Provider store={store}>
       <RouterProvider router={router} />
+      <ToastContainer />
     </Provider>
   </React.StrictMode>,
 )
